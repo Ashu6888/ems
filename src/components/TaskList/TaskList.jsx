@@ -7,8 +7,15 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const TaskList = ({ data }) => {
   console.log("Dataaaaaaaaaaaaaaa", data);
-  const [userData, setUserData, acceptTaskHandler] = useContext(AuthContext);
-   console.log(data , 'Dataa frommm')
+  const [
+    userData,
+    setUserData,
+    acceptTaskHandler,
+    onCompleteTask,
+    onFailedTask,
+  ] = useContext(AuthContext);
+  console.log(userData, "Testinggggg");
+  console.log(data, "Dataa frommm");
   return (
     <div
       id="tasklist"
@@ -17,7 +24,14 @@ const TaskList = ({ data }) => {
       {data.tasks.map((elem, idx) => {
         console.log(elem, "eleeeeeeeeeeeeeeeeeeeeee");
         if (elem.active) {
-          return <AcceptTask key={idx} data={elem} />;
+          return (
+            <AcceptTask
+              key={idx}
+              data={elem}
+              onCompleteTask={onCompleteTask}
+              onFailedTask={onFailedTask}
+            />
+          );
         }
         if (elem.newTask) {
           return (

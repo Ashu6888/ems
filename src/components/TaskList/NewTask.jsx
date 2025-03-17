@@ -1,6 +1,12 @@
 import React from "react";
 
 const NewTask = ({ data, onAcceptTask }) => {
+  const callFunction = () => {
+    const result = onAcceptTask(data.taskTitle);
+    console.log(result, "Result from hunter");
+    // localStorage.setItem("employees", JSON.stringify(result));
+  };
+
   return (
     <div className="flex-shrink-0 h-full w-[300px] p-5 bg-blue-500 rounded-xl">
       <div className="flex justify-between items-center">
@@ -14,7 +20,7 @@ const NewTask = ({ data, onAcceptTask }) => {
       <div className="mt-6">
         <button
           className="bg-green-400 rounded font-medium py-1 px-2 text-xs"
-          onClick={() => onAcceptTask(data.taskTitle)} // Pass the correct identifier
+          onClick={callFunction} // Pass the correct identifier
         >
           Accept Task
         </button>

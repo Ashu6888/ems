@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { FaSearch } from "react-icons/fa";
 import { FaRegCopy } from "react-icons/fa6";
 import run from "../../config/Ai";
+import { setLocalStorage } from "../../utils/localStorage";
 
 const CreateTask = () => {
   const [userData, setUserData] = useContext(AuthContext);
@@ -51,8 +52,9 @@ const CreateTask = () => {
     });
 
     setUserData(updatedData); // Correctly setting updated state
+    localStorage.setItem("employees", JSON.stringify(updatedData));
 
-    console.log("Updated Data", updatedData);
+    console.log("Updated Data Hunter", updatedData);
 
     // Clear form fields
     setTaskTitle("");
@@ -102,7 +104,6 @@ const CreateTask = () => {
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Bold
       .replace(/\n\*/g, "<br />"); // New Line
 
-      
     // ✅ Start typing effect
     const interval = setInterval(() => {
       if (index < formattedText.length) {
@@ -257,7 +258,7 @@ const CreateTask = () => {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  Hello Anubhooti! <span>🤖</span>
+                  Hello Admin! <span>🤖</span>
                 </p>
 
                 {/* ✅ Subtext */}

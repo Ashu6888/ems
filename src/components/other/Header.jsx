@@ -10,7 +10,7 @@ const Header = (props) => {
     if (jsonData.data) {
       setUsername(jsonData.data.firstName);
     } else {
-      setUsername("Anubhooti");
+      setUsername("Admin");
     }
   }, []);
 

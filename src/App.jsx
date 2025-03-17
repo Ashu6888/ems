@@ -9,6 +9,8 @@ const App = () => {
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const [userData, SetUserData] = useContext(AuthContext);
 
+  console.log(userData, "Simple User Data");
+
   useEffect(() => {
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
