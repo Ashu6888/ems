@@ -167,29 +167,73 @@ const CreateTask = () => {
             <input
               value={taskDate}
               onChange={(e) => setTaskDate(e.target.value)}
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
+              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4 text-white"
               type="date"
+              style={{
+                colorScheme: "dark", // Ensures dark mode compatibility
+                WebkitAppearance: "none",
+                appearance: "none",
+                backgroundColor: "transparent",
+                color: "white",
+              }}
             />
           </div>
+
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5">Assign to</h3>
-            <input
+            <select
               value={asignTo}
               onChange={(e) => setAsignTo(e.target.value)}
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
-              type="text"
-              placeholder="Employee name"
-            />
+              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4 text-gray-300 appearance-none"
+              style={{
+                backgroundColor: "transparent",
+                color: "white",
+              }}
+            >
+              <option value="" disabled className="bg-gray-900">
+                Select Employee
+              </option>
+              <option value="Arjun" className="bg-gray-900 text-white">
+                Arjun
+              </option>
+              <option value="Sneha" className="bg-gray-900 text-white">
+                Sneha
+              </option>
+              <option value="Ashu" className="bg-gray-900 text-white">
+                Ashu
+              </option>
+              <option value="Alka" className="bg-gray-900 text-white">
+                Alka
+              </option>
+              <option value="Krishna" className="bg-gray-900 text-white">
+                Krishna
+              </option>
+            </select>
           </div>
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5">Category</h3>
-            <input
+            <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
-              type="text"
-              placeholder="Design, Dev, etc."
-            />
+              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4 text-gray-300 appearance-none"
+              style={{
+                backgroundColor: "transparent",
+                color: "white",
+              }}
+            >
+              <option value="" disabled className="bg-gray-900">
+                Select Category
+              </option>
+              <option value="Developer" className="bg-gray-900 text-white">
+                Developer
+              </option>
+              <option value="Designer" className="bg-gray-900 text-white">
+                Designer
+              </option>
+              <option value="Tester" className="bg-gray-900 text-white">
+                Tester
+              </option>
+            </select>
           </div>
           <div className="w-4/5">
             <h3 className="text-sm text-gray-300 mb-0.5">Description</h3>
