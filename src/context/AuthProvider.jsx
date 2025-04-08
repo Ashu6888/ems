@@ -177,7 +177,7 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // setLocalStorage();
+    setLocalStorage();
     const { employees } = getLocalStorage();
     setUserData(employees);
     console.log(employees, "Shivam");

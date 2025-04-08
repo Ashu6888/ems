@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaRegCopy } from "react-icons/fa6";
 import run from "../../config/Ai";
 import { setLocalStorage } from "../../utils/localStorage";
+import { toast } from "react-toastify";
 
 const CreateTask = () => {
   const [userData, setUserData] = useContext(AuthContext);
@@ -57,6 +58,11 @@ const CreateTask = () => {
     console.log("Updated Data Hunter", updatedData);
 
     // Clear form fields
+
+    toast.success(`Task Created to ${asignTo}`, {
+      autoClose: 1000,
+    });
+
     setTaskTitle("");
     setCategory("");
     setAsignTo("");
@@ -302,7 +308,7 @@ const CreateTask = () => {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  Hello Admin! <span>🤖</span>
+                  Hello Ashutosh! <span>🤖</span>
                 </p>
 
                 {/* ✅ Subtext */}

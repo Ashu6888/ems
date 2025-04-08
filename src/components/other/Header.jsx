@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { setLocalStorage } from "../../utils/localStorage";
+import { toast } from "react-toastify";
 
 const Header = (props) => {
   const [username, setUsername] = useState("");
@@ -10,11 +11,14 @@ const Header = (props) => {
     if (jsonData.data) {
       setUsername(jsonData.data.firstName);
     } else {
-      setUsername("Anubhooti");
+      setUsername("Ashutosh");
     }
   }, []);
 
   const logOutUser = () => {
+    toast.success("Logout", {
+      autoClose: 400,
+    });
     localStorage.setItem("loggedInUser", "");
     props.changeUser("");
     // window.location.reload()

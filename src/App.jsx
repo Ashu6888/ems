@@ -3,6 +3,7 @@ import Login from "./components/Auth/Login";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
 import { AuthContext } from "./context/AuthProvider";
+import { toast } from "react-toastify";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -25,6 +26,9 @@ const App = () => {
 
   const handleLogin = (email, password) => {
     if (email == "Anu@gmail.com" && password == "123") {
+      toast.success("Logged In", {
+        autoClose: 500,
+      });
       setUser("admin");
       localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
     } else if (userData) {
@@ -33,6 +37,9 @@ const App = () => {
         (e) => email == e.email && e.password == password
       );
       if (employee) {
+        toast.success("Logged In", {
+          autoClose: 500,
+        });
         setUser("employee");
         setLoggedInUserData(employee);
         localStorage.setItem(
@@ -40,16 +47,12 @@ const App = () => {
           JSON.stringify({ role: "employee", data: employee })
         );
       } else {
-        setAlertMessage("Invalid credentials");
-        setShowAlert(true);
-
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 2000);
+        toast.error("Invalid Credentials", {
+          autoClose: 1000,
+        });
       }
     }
   };
-
 
   console.log(loggedInUserData, "Saala Tye hai fasad ki add");
 
@@ -57,10 +60,11 @@ const App = () => {
     <>
       {!user ? <Login handleLogin={handleLogin} /> : ""}
       {showAlert && (
-        <div className="alert fixed top-5 left-1/2 transform -translate-x-1/2 p-2.5 px-5 bg-lightcoral border border-red-500 rounded-lg text-white z-50">
+        <div className="alert fixed top-[10vh] left-1/2 transform -translate-x-1/2 p-2.5 px-5 bg-lightcoral border border-red-500 rounded-lg text-white z-50">
           {alertMessage}
         </div>
       )}
+
       {user == "admin" ? (
         <AdminDashboard changeUser={setUser} />
       ) : user == "employee" ? (
